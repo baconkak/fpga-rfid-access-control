@@ -1,0 +1,35 @@
+# Local portfolio preparation files
+.local/
+
+# Reproducible build and simulation outputs
+build/
+.Xil/
+*.jou
+*.log
+*.str
+*.wdb
+*.vcd
+*.pb
+*.rpx
+*.dcp
+*.bit
+*.ltx
+*.zip
+xsim.dir/
+webtalk*
+
+# Vivado generated directories (keep .xpr and .srcs)
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+
+# Editor and operating system files
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,29 @@
+name: RTL simulation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Icarus Verilog
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+      - name: Run self-checking regression
+        run: python scripts/run_sim.py --simulator iverilog
+      - name: Upload simulation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rtl-simulation-evidence
+          path: build/sim_iverilog/

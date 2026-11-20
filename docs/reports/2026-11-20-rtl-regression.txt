@@ -1,0 +1,35 @@
+RTL regression validation: 2026-11-20
+Simulator: AMD Vivado XSim 2024.1
+Clock: 8 ns (125 MHz)
+Test lock parameter: 40
+Board testing: not performed
+
+SHA-256 inputs:
+8d02be980bdbb44c3e2a3de02c2a71bed85fb6c2898b919fe300b5920c12dcdb  RFIDProj/RFIDProj.srcs/sources_1/new/rfid_reader_top.v
+b66b10b00869d8f2f6cd939a19318d78324e57d2b64acdb039b588d03ca87e38  verification/tb_rfid_access.v
+239a9fd01490638a107f1d0b7e2b77d8556b6ee8b83a233ab16589008df66ff8  scripts/run_sim.py
+
+PASS: Reset enters IDLE with result LEDs off
+PASS: Default authorized UID is granted
+PASS: REQA, ANTICOLL and SELECT command states are observed
+PASS: Wrong UID is denied and counted
+PASS: Unsupported ATQA is denied without counting a UID failure
+PASS: Unsupported SAK is denied without counting a UID failure
+PASS: Successful access clears accumulated UID failures
+PASS: First consecutive wrong UID is denied
+PASS: Second consecutive wrong UID is denied
+PASS: Third consecutive wrong UID enters LOCKED
+PASS: Scan and enrollment requests are ignored while locked
+PASS: Lockout expires and clears failure count
+PASS: Current lockout occupies LOCK_CYCLES plus one clock period
+PASS: Enrollment attempted during lockout did not replace authorized UID
+PASS: Registration accepts a valid card and clears failures
+PASS: Registered UID is granted in normal mode
+PASS: Previous UID is denied after replacement
+PASS: Card inputs are latched for the active transaction
+PASS: A held trigger does not retrigger the scan
+PASS: Registration is volatile and is cleared by reset
+PASS: Reset restores the default authorized UID
+PASS: Lockout can be entered again after reset
+PASS: Reset exits lockout immediately
+ALL TESTS PASSED (23 checks)
